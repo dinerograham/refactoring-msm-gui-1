@@ -11,4 +11,14 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
+
+  def filmography
+    #returns array of movies by given director in ascending order by year
+    matching_movies = Movie.where({ :director_id => self.id })
+
+    films = matching_movies.order({ :year => :asc })
+
+    return films
+  end
+
 end
